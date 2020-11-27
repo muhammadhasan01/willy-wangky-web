@@ -26,6 +26,7 @@ require_once("../cookie-check/cookie-check.php");
                 <p class="fail-upload" id="fail-upload"></p>
                 <?php
                     if (isset($_POST["email"]) and isset($_POST["password"])) {
+
                         $user_model_path = "../models/user.php";
                         require_once($user_model_path);
                         $User = new User();
@@ -33,6 +34,7 @@ require_once("../cookie-check/cookie-check.php");
                         $email = $_POST["email"];
                         $password = $_POST["password"];
                         $result = $User->get_user_by_email($email, $password);
+
                         if ($result) {
                             $role = $result[0][3];
                             $username = $result[0][1];
@@ -62,7 +64,7 @@ require_once("../cookie-check/cookie-check.php");
                     
                     <div class="buttons row-flex">
                         <a href="../register/register.php">Register</a>
-                        <input type="button" value="Login" id="login-button">
+                        <input type="submit" value="Login" id="login-button">
                     </div>
                 </form>
             </div>

@@ -99,7 +99,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-top: 2rem;
 }
 
-form > label, input[type="button"] {
+form > label, input[type="submit"] {
     align-self: flex-start;
     margin-top: 1.5rem;
     color: white;
@@ -129,7 +129,7 @@ form > label, input[type="button"] {
     background-color: rgb(92, 5, 5);
 }
 
-input[type="button"] {
+input[type="submit"] {
     margin: 0;
     color: black;
     font-weight: bold;
@@ -145,7 +145,7 @@ input[type="button"] {
     transition: background-color 0.2s ease;
 }
 
-input[type="button"]:hover {
+input[type="submit"]:hover {
     background-color: chocolate;
 }
 
