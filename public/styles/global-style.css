@@ -1,0 +1,42 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;    
+}
+
+.column-flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fail-upload {
+    color: red;
+}
+
+.successful-upload {
+    color: green;
+}

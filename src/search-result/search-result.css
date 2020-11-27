@@ -1,0 +1,25 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.page {
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
+    border-radius: 8px;
+    margin: 16px 8px;
+}
+
+.page:hover {
+    background-color: chocolate;
+    color: white;
+}
+
+.active {
+    background-color: chocolate;
+    color: white;
+}

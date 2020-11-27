@@ -1,0 +1,12 @@
+config_db_fabian.php   
+debug.log
+*.jpg
+*.JPG
+!choco-0.jpg
+!choco-1.jpg
+!choco-2.jpg
+!choco-3.jpg
+!choco-4.jpg
+!choco-5.jpg
+!warteg-1-56.png
+!search-icon.png

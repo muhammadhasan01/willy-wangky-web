@@ -1,0 +1,70 @@
+.card {
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 20px;
+    display: flex;
+    /* background-color: rgb(228, 113, 5); */
+}
+
+#input-data{
+    display: block;
+}
+
+.card img {
+    flex: 30%;
+    width: 30%;
+    border-radius: 20px;
+}
+
+.details {
+    flex: 70%; 
+    text-align: left;
+    padding: 20px;
+    /* background-color: rgb(231, 200, 170); */
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 25px;
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    /* text-align: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 20px; */
+    /* display: flex; */
+}
+
+.buttons {
+    float: right;
+    border-radius: 20px;
+    background-color: chocolate;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buy-form {
+    display: none;
+}
+
+#address {
+    width: 100%;
+}

@@ -1,0 +1,31 @@
+create table user (
+    id int primary key auto_increment,
+    username varchar(255) unique not null,
+    password varchar(255) not null,
+    email varchar(255) unique not null,
+    role varchar(20) not null
+);
+
+create table chocolate (
+    id int primary key auto_increment,
+    name varchar(255) not null,
+    price int not null,
+    amount int not null,
+    sold int not null default 0,
+    description text,
+    file_name varchar(255) not null,
+    CHECK(amount >= 0),
+    CHECK(price>0)
+);
+
+create table transaction (
+    id int primary key auto_increment,
+    id_user int not null,
+    id_chocolate int not null,
+    amount int not null,
+    total_price int not null,
+    time timestamp default CURRENT_TIMESTAMP,
+    address text not null,
+    FOREIGN KEY (id_user) references user(id),
+    FOREIGN KEY (id_chocolate) references chocolate(id)
+);
