@@ -54,6 +54,7 @@ include('../../components/navbar/navbar.php');
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" required>
             </div>
+            <!-- TODO: request bahan material dari web supplier buat dijadiin resep coklat -->
             <div class="text-input">
                 <label for="price">Price</label>
                 <input type="number" name="price" id="price" required>

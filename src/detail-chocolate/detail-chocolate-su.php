@@ -63,6 +63,7 @@
             </div>
         </div>
         <div class="buy-form container">
+            <!-- TODO: Buat request dulu ke web service factory, kalau belum = pending, kalau sudah = delivered -->
             <button class="buttons" >Add</button>
             <button type="button" class="buttons" onclick="hideForm()">Cancel</button>
         </div>
