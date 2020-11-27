@@ -85,7 +85,7 @@ p {
     margin-bottom: 1rem;
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], input[type="password"] {
     border: none;
     background-color: transparent;
     outline: none;

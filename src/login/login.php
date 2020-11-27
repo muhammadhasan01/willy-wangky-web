@@ -14,9 +14,8 @@ require_once("../cookie-check/cookie-check.php");
 <body>
     <div class="login-container">
         <div class="title">
-            <h1>Willy Wangky</h1>
-            <h2>Choco Factory</h2>
-            <br><br><br><br>
+            <h1>Willy Wangky Web</h1>
+            <br><br>
             <p>Anda mungkin sudah tahu mengenai pabrik coklat terbesar seantero dunia, Willy Wangky. Akan tetapi, produsen terbaik tidak akan sukses tanpa konsumen dan distributor terbaik. Sebab coklat dari Willy Wangky sangat disenangi konsumen, maka Willy Wangky membutuhkan distributor yang handal dalam menangani penjualan coklat. Untungnya, Willy Wangky mengenal Jan. Jan sudah sangat pengalaman dengan distribusi makanan dan minuman ringan. Bahkan, Jan sudah memiliki usaha sendiri bernama Jan’s Cook.</p>
         </div>
         <div class="login-card">
@@ -59,7 +58,7 @@ require_once("../cookie-check/cookie-check.php");
                     <input type="text" id="email" name="email">
     
                     <label for="password">Password</label>
-                    <input type="text" id="password" name="password">
+                    <input type="password" id="password" name="password">
                     
                     <div class="buttons row-flex">
                         <a href="../register/register.php">Register</a>
