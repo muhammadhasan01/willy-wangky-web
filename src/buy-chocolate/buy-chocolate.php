@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once('../models/transaction.php');
 require_once('../models/user.php');
 

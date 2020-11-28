@@ -8,6 +8,39 @@ class Chocolate {
         $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     }
 
+    public function checkAddStock() {
+        // select yang masih pending
+        // tembak satu2 ke WS Factory
+        // kalau approve, ubah di db dan tambah stock coklat
+        $query = "SELECT id, id_chocolate, jumlah FROM add_stock WHERE status='PENDING'";
+        $result = $this->db->query($query)->fetch_all();
+        foreach ($result as $row) {
+            $xml_data = "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">
+            <Body>
+                <checkStatus xmlns=\"http://service.willywangky/\">
+                    <arg0 xmlns=\"\">".$row[0]."</arg0>
+                </checkStatus>
+            </Body>
+            </Envelope>";
+            $URL = "http://localhost:8081/api/stock?wsdl";
+
+            $ch = curl_init($URL);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_data");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $output = curl_exec($ch);
+            curl_close($ch);
+
+            if (preg_match('/<return>(.*?)<\/return>/',(string) $output, $match) == 1) {
+                $status = (string)$match[1];
+            }
+            if (isset($status) and $status === "APPROVED"){
+                $this->db->query("UPDATE add_stock SET status='APPROVED' WHERE id=$row[0]");
+                $this->add_amount_by_id($row[1], $row[2]);
+            }
+        }
+    }
     /*
     Mengembalikan semua coklat terurut berdasarkan sold amount
     hasil : matriks 
@@ -35,6 +68,11 @@ class Chocolate {
         } else {
             return false;
         }
+    }
+
+    public function get_choco_name_by_id($id){
+        $query = "SELECT name FROM chocolate WHERE id=$id";
+        return $this->db->query($query)->fetch_all()[0][0];
     }
 
     // mengembalikan semua coklat hasil search
@@ -79,9 +117,4 @@ class Chocolate {
         }
     }
 }
-// Test
-// $cek = new Chocolate();
-// echo "lalalal";
-// $cek->get_by_id(1);
-// ($cek->sell(3,4))
 ?>

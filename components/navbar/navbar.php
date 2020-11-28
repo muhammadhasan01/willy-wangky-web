@@ -1,5 +1,6 @@
 <?php
     $uri = $_SERVER['REQUEST_URI'];
+    ob_start();
 ?>
 <style><?php include 'navbar.css'?></style>
 <div class="topnav">
@@ -29,9 +30,10 @@
 <?php
     if (isset($_POST["logout"])) {
         echo $_COOKIE["username"];
+        ob_start();
         setcookie("username", "", time() - 3600, "/");
         setcookie("role", "", time() - 3600, "/");
-        header('Location: ../login/login.php');
+        header('Location: ../../src/login/login.php');
         exit();
     }
 ?>

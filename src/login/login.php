@@ -1,5 +1,6 @@
 <?php
 require_once("../cookie-check/cookie-check.php");
+ob_start();
 ?>
 
 <!DOCTYPE html>

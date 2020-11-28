@@ -1,6 +1,9 @@
 <?php 
 include("../cookie-check/cookie-check.php");
 include('../../components/navbar/navbar.php');
+require_once('../models/chocolate.php');
+$chocolate = new Chocolate();
+$chocolate->checkAddStock();
 ?>
 <!DOCTYPE html>
 <html lang="en">

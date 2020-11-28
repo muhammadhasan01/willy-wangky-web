@@ -28,7 +28,7 @@
     width: 100%;
 }
 
-.add-chocolate-form > input[type="submit"] {
+.add-chocolate-form > #button-submit {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 30vh;
     align-self: flex-end;
@@ -48,6 +48,6 @@
     transition: background-color 0.2s ease;
 }
 
-.add-chocolate-form > input[type="submit"]:hover {
+.add-chocolate-form > #button-submit:hover {
     background-color: rgb(97, 49, 14);
 }
