@@ -24,7 +24,7 @@ $role = "";
 $CookieChecker = new CookieChecker();
 $cookie_dict = $CookieChecker->check_cookie_exists();
 if (!$cookie_dict and (strpos($_SERVER['REQUEST_URI'], 'login') === false and strpos($_SERVER['REQUEST_URI'], 'register') === false)) {
-    header('Location: /src/login/login.php');
+    header('Location: ../login/login.php');
     exit();
 } else if ($cookie_dict) {
     if ($cookie_dict["username"]) {
@@ -33,12 +33,12 @@ if (!$cookie_dict and (strpos($_SERVER['REQUEST_URI'], 'login') === false and st
     if ($cookie_dict["role"]) {
         $role = $cookie_dict["role"];
         if (strpos($_SERVER['REQUEST_URI'], 'add-chocolate') !== false and $role !== "SUPER_USER") {
-            header('Location: /src/404/404.php');
+            header('Location: ../404/404.php');
             exit();
         }
     }
     if (strpos($_SERVER['REQUEST_URI'], 'login') !== false or strpos($_SERVER['REQUEST_URI'], 'register') !== false) {
-        header('Location: /src/dashboard/dashboard.php');
+        header('Location: ../dashboard/dashboard.php');
         exit();
     }
 }

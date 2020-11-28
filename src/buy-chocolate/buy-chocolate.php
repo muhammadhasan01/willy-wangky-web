@@ -19,6 +19,6 @@ if ($id_user){
     $buy_msg = "Transaksi gagal.";
 }
 
-header("location: /src/dashboard/dashboard.php?buy_msg=".$buy_msg . $amount);
+header("location: ../dashboard/dashboard.php?buy_msg=".$buy_msg . $amount);
 
 ?>

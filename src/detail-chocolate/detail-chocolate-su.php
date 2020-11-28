@@ -4,7 +4,7 @@
     $id = $_GET['id'];
     $user = new User();
     if ($user->get_role($_COOKIE["username"]) == "USER"){
-        header("Location: detail-chocolate.php?id=$id");
+        header("Location: ./detail-chocolate.php?id=$id");
         exit();
     }
 ?>

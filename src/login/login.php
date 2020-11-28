@@ -41,7 +41,7 @@ require_once("../cookie-check/cookie-check.php");
                             // echo $role;
                             setcookie("username", $username, time() + (86400 * 30), "/"); // 30 hari, "/" artinya cookie buat seluruh website
                             setcookie("role", $role, time() + (86400 * 30), "/"); 
-                            header("Location: /src/dashboard/dashboard.php");
+                            header("Location: ../dashboard/dashboard.php");
                             exit();
                         } else {
                             // echo "<p>Enter the correct uname and password</p>";
@@ -64,7 +64,7 @@ require_once("../cookie-check/cookie-check.php");
                     
                     <div class="buttons row-flex">
                         <a href="../register/register.php">Register</a>
-                        <input type="submit" value="Login" id="login-button">
+                        <input type="button" value="Login" id="login-button">
                     </div>
                 </form>
             </div>

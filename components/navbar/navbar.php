@@ -31,7 +31,7 @@
         echo $_COOKIE["username"];
         setcookie("username", "", time() - 3600, "/");
         setcookie("role", "", time() - 3600, "/");
-        header('Location: /src/login/login.php');
+        header('Location: ../login/login.php');
         exit();
     }
 ?>

@@ -43,7 +43,7 @@ require_once("../cookie-check/cookie-check.php");
                                 if ($User->insert_user($username, $password, $email)) {
                                     setcookie("username", $username, time() + (86400 * 30), "/"); // 30 hari, "/" artinya cookie buat seluruh website
                                     setcookie("role","USER", time() + (86400 * 30), "/"); 
-                                    header("Location: /src/dashboard/dashboard.php");
+                                    header("Location: ./dashboard/dashboard.php");
                                     exit();
                                 } else {
                                     echo "<p>An error occured while we were registering your account. Pls try again.</p>";

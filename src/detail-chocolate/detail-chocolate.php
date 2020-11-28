@@ -4,7 +4,7 @@
     $id = $_GET['id'];
     $user = new User();
     if ($user->get_role($_COOKIE["username"]) == "SUPER_USER"){
-        header("location: detail-chocolate-su.php?id=$id");
+        header("location: ./detail-chocolate-su.php?id=$id");
         exit();
     }
 ?>
