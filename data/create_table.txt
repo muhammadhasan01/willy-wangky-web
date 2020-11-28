@@ -29,3 +29,11 @@ create table transaction (
     FOREIGN KEY (id_user) references user(id),
     FOREIGN KEY (id_chocolate) references chocolate(id)
 );
+
+create table add_stock (
+    id int primary key,
+    id_chocolate int,
+    jumlah int,
+    status varchar(20) default 'PENDING',
+    FOREIGN KEY (id_chocolate) references chocolate(id)
+)
