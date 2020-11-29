@@ -1,13 +1,13 @@
--- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.21, for macos10.15 (x86_64)
 --
 -- Host: localhost    Database: willy_wangky
 -- ------------------------------------------------------
--- Server version	10.4.14-MariaDB
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -16,24 +16,52 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `add_stock`
+--
+
+DROP TABLE IF EXISTS `add_stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `add_stock` (
+  `id` int NOT NULL,
+  `id_chocolate` int DEFAULT NULL,
+  `jumlah` int DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'PENDING',
+  PRIMARY KEY (`id`),
+  KEY `id_chocolate` (`id_chocolate`),
+  CONSTRAINT `add_stock_ibfk_1` FOREIGN KEY (`id_chocolate`) REFERENCES `chocolate` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `add_stock`
+--
+
+LOCK TABLES `add_stock` WRITE;
+/*!40000 ALTER TABLE `add_stock` DISABLE KEYS */;
+INSERT INTO `add_stock` VALUES (1,1,2,'APPROVED');
+/*!40000 ALTER TABLE `add_stock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `chocolate`
 --
 
 DROP TABLE IF EXISTS `chocolate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `chocolate` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `sold` int(11) NOT NULL DEFAULT 0,
-  `description` text DEFAULT NULL,
+  `price` int NOT NULL,
+  `amount` int NOT NULL,
+  `sold` int NOT NULL DEFAULT '0',
+  `description` text,
   `file_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `CONSTRAINT_1` CHECK (`amount` > 0),
-  CONSTRAINT `CONSTRAINT_2` CHECK (`price` > 0)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `chocolate_chk_1` CHECK ((`amount` >= 0)),
+  CONSTRAINT `chocolate_chk_2` CHECK ((`price` > 0))
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +70,7 @@ CREATE TABLE `chocolate` (
 
 LOCK TABLES `chocolate` WRITE;
 /*!40000 ALTER TABLE `chocolate` DISABLE KEYS */;
-INSERT INTO `chocolate` VALUES (1,'Coklat Manis',50000,14,6,'Coklat manis dengan sedikit sentuhan asin, khas Indonesia','choco-3.jpg'),(2,'Teuscher',550000,10,0,'Brand coklat terbaik didunia','choco-5.jpg'),(3,'Kuliah',12500000,99,0,'The image explains it well...','kuliah.PNG'),(4,'Kuliah Deui',12500000,99,0,'Aduhhh UKT mahal...','kuliah.PNG'),(6,'Mata',1000000,99,0,'Mata jun','cobain.jpg'),(7,'Yang Keenam',1000,10,0,'Nu ka genep','MemesTilting.PNG'),(8,'Tujuh',1000,10,0,'Nu ka tujuh','TTD.PNG'),(9,'Dalapan',8000,10,0,'Nu ka dalapan','kuliah.PNG'),(10,'Salapan',9000,10,0,'Nu ka salapan','kuliah.PNG'),(11,'Sapuluh',10000,10,0,'Nu ka sapuluh','kuliah.PNG'),(12,'Baleg',12500,6969,0,'Cik nu baleg atulah MPPL SI IMK, lieur lieur teuing','kuliah.PNG'),(14,'Ngeunah Pisan',50000,49,20,'Hayang ka warteg ngan hoream kumaha nya. Isuk nuju milarian naon wae kitu? Moal ulin jeung babaturan ieu','warteg-1-56.png');
+INSERT INTO `chocolate` VALUES (1,'Cardburry',35000,0,2,'Enak murah bergizi','Screen Shot 2020-11-29 at 00.28.02-2.png'),(2,'Silver Queen',25000,0,0,'Low profile chocolate','Screen Shot 2020-11-29 at 00.32.36-33.png'),(3,'Monggo',40000,0,0,'Coklat aseli produk lokal','Screen Shot 2020-11-29 at 00.34.30-69.png');
 /*!40000 ALTER TABLE `chocolate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,21 +80,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `transaction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) NOT NULL,
-  `id_chocolate` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `total_price` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL,
+  `id_chocolate` int NOT NULL,
+  `amount` int NOT NULL,
+  `total_price` int NOT NULL,
+  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `address` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   KEY `id_chocolate` (`id_chocolate`),
   CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
   CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`id_chocolate`) REFERENCES `chocolate` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +103,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,305,1,1,50000,'2020-10-24 16:39:51','Asik'),(2,305,1,5,250000,'2020-10-25 11:38:20','Jalan Singkong'),(3,305,14,20,1000000,'2020-10-25 11:38:52','Kamana wae');
+INSERT INTO `transaction` VALUES (1,2,1,1,35000,'2020-11-28 17:43:19','ITB'),(2,3,1,1,35000,'2020-11-28 17:44:22','Bandung');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,16 +113,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `role` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=648 DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +132,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'fabian','2472ee727ed8de9a818fc657a6895646','fabian','user'),(3,'zunan','e399c1af5ad536d1d04f68089e74c28a','zunanalfikri@gmail.com','USER'),(305,'fab1','fab1','fab1@fab.fab','USER'),(630,'fab2','fab2','fab2@fab.fab','USER'),(642,'admin2','admin2','admin2@admin.admin','SUPER_USER'),(643,'admin','admin','admin@admin.admin','SUPER_USER'),(644,'fab3','fab3','fab3@fab.fab','USER'),(645,'fab4','fab4','fab4@fab.fab','USER'),(646,'fab5','fab5','fab5@fab.fab','USER'),(647,'fab6','fab6','fab6@fab.fab','USER');
+INSERT INTO `user` VALUES (1,'admin','admin','admin@gmail.com','SUPER_USER'),(2,'fab','fab','fab@gmail.com','USER'),(3,'hasan','hasan','hasan@gmail.com','USER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -116,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-25 18:54:54
+-- Dump completed on 2020-11-29 17:19:06

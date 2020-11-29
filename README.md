@@ -18,12 +18,15 @@ Aplikasi ini memiliki fitur :
 3. CSS
 5. Javascript
 
+## Basisdata
+Web ini menggunakan basisdata MySQL yang skema pembuatannya terdapat pada create_table.txt. Perubahan yang dilakukan dari database sebelumnya yaitu menambahkan tabel add_stok untuk mencatat history penambahan stok. Pengguna dapat mengimport database yang terdapat pada data/willy_wangky.sql untuk data awal.
+
 ## How to Run
 1. Clone repository dan masuk ke direktori repository
 2. Setup database dengan mengimport database pada `data/willy_wangky.sql`
 3. Setting host, nama, username dan password database pada `src/models/config_db.php` 
-4. Eksekusi script `php -S localhost:8080`
-5. Buka [localhost](http://localhost:8080)
+4. Eksekusi script `php -S localhost:8083`
+5. Buka [localhost](http://localhost:8083)
 
 ## Tampilan aplikasi
 
@@ -58,44 +61,52 @@ Berikut adalah tampilan aplikasi yang telah dibuat
 ![Halaman-add-stock](screenshots/add-stock.png)
 
 ### Halaman Add New Chocolate
-
-![Halaman-add-chocolate](screenshots/add-new-chocolate.png)
+Halaman lama :
+![Halaman-add-chocolate lama](screenshots/add-new-chocolate.png)
+Halaman baru :
+![Halaman-add-chocolate baru](screenshots/new-add-new-chocolate.png)
 
 ## Pembagian Tugas
 
-Setiap anggota kelompok diwajibkan untuk mengerjakan bagian frontend dan backend.
+### REST
+1. Transaksi dengan WS-Factory - 13518019, 13518012
+2. Daftar bahan dan harga - 13518022
 
-### Frontend
-1. Login : 13518022
-2. Register : 13518022
-3. 404 : 13518022
-4. Add Chocolate : 13518019
-5. Buy Chocolate : 13518019
-6. Cookie Check : -
-7. Dashboard : 13518012
-8. Detail Chocolate : 13518019
-9. Models : -
-10. New Chocolate : 13518022
-11. Search Result : 13518012, 13518022
-12. Transaction History : 13518012 
-13. Navbar : 13518012, 13518022
-14. Product Card : 13518012
-15. Search Result Card : 13518022
+### SOAP
+1. Fungsi getAllChocolate - 13518019
+2. Fungsi addChocolate - 13518019
+3. Fungsi produceChocolate - 13518022, 13518012
+4. Fungsi isUserExist - 13518019
+5. Fungsi getAllBahan - 13518022
+6. Fungsi getAllResep - 13518022
+7. Fungsi addBahan - 13518022
+8. Fungsi getSaldo - 13518012
+9. Fungsi setSaldo - 13518012
+10. Fungsi addSaldo - 13518012
+11. Fungsi addStock - 13518019
+12. Fungsi approveAddStock - 13518019
+13. Fungsi getAllReqAddStock - 13518019
+14. Fungsi checkStatus - 13518019
 
+### ReactJS
+1. Navigation Bar - 13518012
+2. Halaman Daftar Pemesan Coklat - 13518019
+3. Halaman Coklat yang tersedia di pabrik - 13518012
+4. Halaman Daftar Bahan - 13518012
+5. Halaman Daftar Resep Coklat - 13518012
+6. Halaman Daftar Permintaan Penambahan Stok Coklat - 13518019
+7. Halaman Lihat Saldo - 13518012
+8. Halaman Beli Bahan - 13518022
+9. Halaman Produksi Coklat - 13518019
+10. Halaman Login - 13518022
 
-### Backend
-1. Login : 13518022
-2. Register : 13518022
-3. 404 : -
-4. Add Chocolate : 13518019
-5. Buy Chocolate : 13518019
-6. Cookie Check : 13518022
-7. Dashboard : 13518022
-8. Detail Chocolate : 13518019
-9. Models : 13518019
-10. New Chocolate : 13518022
-11. Search Result : 13518022
-12. Transaction History : 13518012
-13. Navbar : 13518022
-14. Product Card : -
-15. Search Result Card : -
+### Perubahan Willy Wangky's Web
+1. Halaman Add New Chocolate - 13518012, 13518022
+2. Request Add Stock + database - 13518019
+3. Cek berkala Approval Add Stock - 13518019, 13518022
+4. Penambahan saldo pada WS Factory - 13518019
+
+## Author
+13518012 | Muhammad Hasan \
+13518019 | Muhammad Zunan Alfikri \
+13518022 | Fabian Zhafransyah
